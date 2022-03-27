@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center">
+
+    <!--    <LinearLayout-->
+    <!--        android:layout_width="0dp"-->
+    <!--        android:layout_height="match_parent"-->
+    <!--        android:layout_weight="20"-->
+    <!--        android:orientation="horizontal"-->
+    <!--        android:weightSum="100" >-->
+    <!--        <TextView-->
+    <!--            android:id="@+id/word0"-->
+    <!--            android:layout_width="50dp"-->
+    <!--            android:layout_height="50dp"-->
+    <!--            android:layout_weight="100"-->
+    <!--            android:text="번호"-->
+    <!--            android:background="#B2EBF4"-->
+    <!--            android:gravity="center"/>-->
+    <!--    </LinearLayout>-->
+
+    <TextView
+        android:id="@+id/word0"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:textSize="30sp"
+        android:layout_marginVertical="8dp"
+        android:layout_marginEnd="8dp"
+        android:text=""
+        android:gravity="center"
+        />
+    <TextView
+        android:id="@+id/word1"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:textSize="30sp"
+        android:layout_marginVertical="8dp"
+        android:layout_marginEnd="8dp"
+        android:text=""
+        android:gravity="center"
+        />
+    <TextView
+        android:id="@+id/word2"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:textSize="30sp"
+        android:layout_marginVertical="8dp"
+        android:layout_marginEnd="8dp"
+        android:text=""
+        android:gravity="center"
+        />
+    <TextView
+        android:id="@+id/word3"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:textSize="30sp"
+        android:layout_marginVertical="8dp"
+        android:layout_marginEnd="8dp"
+        android:text=""
+        android:gravity="center"
+        />
+    <TextView
+        android:id="@+id/word4"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:textSize="30sp"
+        android:layout_marginVertical="8dp"
+        android:text=""
+        android:gravity="center"
+
+        />
+
+</LinearLayout>
