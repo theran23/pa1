@@ -40,23 +40,35 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edittext"
         app:layout_constraintBottom_toTopOf="@+id/letterlist"
-
         android:orientation="horizontal"
         app:layout_constraintHorizontal_bias="0.0">
     </ListView>
-    <ListView
-        android:id="@+id/letterlist"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_margin="8dp"
+<!--    app:layout_constraintBottom_toTopOf="@+id/letterlist"-->
 
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        <ListView
+            android:id="@+id/letterlist"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="8dp"
 
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/wordlist">
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
 
-    </ListView>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/wordlist">
+
+        </ListView>
+<!--    <TextView-->
+<!--        android:id="@+id/textview"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="50dp"-->
+<!--        android:textSize="30sp"-->
+<!--        android:text=""-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/wordlist"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        />-->
 </androidx.constraintlayout.widget.ConstraintLayout>
