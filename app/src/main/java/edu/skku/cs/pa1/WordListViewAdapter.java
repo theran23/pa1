@@ -57,14 +57,12 @@ public class WordListViewAdapter extends BaseAdapter {
         }
 
         String word = items.get(i).word;
-        Log.v("'test'","'**************************************'");
-        Log.v("test",the_word);
-        Log.v("test",word);
+
 
         int[] WordViewIDs = new int[] {R.id.word0, R.id.word1, R.id.word2, R.id.word3, R.id.word4 };
         for(int k=0; k<WordViewIDs.length; k++) {
             TextView t = view.findViewById(WordViewIDs[k]);
-            t.setText(String.valueOf(word.charAt(k)));
+            t.setText(String.valueOf(word.charAt(k)).toUpperCase());
 
             if(the_word.indexOf(word.charAt(k))<0){
                 t.setBackgroundColor(ContextCompat.getColor(mContext, R.color.background_out));

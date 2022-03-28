@@ -1,6 +1,7 @@
 package edu.skku.cs.pa1;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -20,6 +21,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.StringWriter;
 import java.util.ArrayList;
+import java.util.Locale;
 import java.util.Random;
 import java.util.Scanner;
 import java.util.stream.Collectors;
@@ -27,7 +29,9 @@ import java.util.stream.Collectors;
 public class MainActivity extends AppCompatActivity {
 
     private WordListViewAdapter wordlistviewadpater;
+    private LetterListViewAdapter graylistviewadapter,greenlistviewadapter,yellowlistviewadapter;
     private ArrayList<NthTrial> items;
+    private ArrayList<String> greens, yellows, grays;
 
     public static Context mContext;
     public String the_word;
@@ -50,21 +54,34 @@ public class MainActivity extends AppCompatActivity {
         }
         String dictionaries[]=result.split("\\r?\\n");
         Random r = new Random();
-        TextView t = findViewById(R.id.textview);
-
         the_word = dictionaries[r.nextInt(dictionaries.length)];
-        t.setText(the_word);
 
 
 
         ListView wordlist = findViewById(R.id.wordlist);
+        ListView graylist = findViewById(R.id.graylist);
+        ListView greenlist = findViewById(R.id.greenlist);
+        ListView yellowlist = findViewById(R.id.yellowlist);
         Button submit_btn = findViewById(R.id.submit_btn);
 
         items = new ArrayList<NthTrial>();
+        yellows = new ArrayList<String>();
+        greens = new ArrayList<String>();
+        grays = new ArrayList<String>();
+
+        wordlistviewadpater = new WordListViewAdapter(getApplicationContext(), items, the_word);
+//        wordlist.setAdapter(wordlistviewadpater);
+        graylistviewadapter = new LetterListViewAdapter(getApplicationContext(), grays, "gray");
+        greenlistviewadapter = new LetterListViewAdapter(getApplicationContext(), greens, "green");
+        yellowlistviewadapter = new LetterListViewAdapter(getApplicationContext(), yellows, "yellow");
+//        graylist.setAdapter(graylistviewadapter);
+//        greenlist.setAdapter(greenlistviewadapter);
+//        yellowlist.setAdapter(yellowlistviewadapter);
+
 
         submit_btn.setOnClickListener(view->{
             EditText edittext = findViewById(R.id.edittext);
-            String input_word = edittext.getText().toString();
+            String input_word = edittext.getText().toString().toLowerCase();
 
             boolean in_dictionaries = false;
             for(int i=0; i< dictionaries.length; i++){
@@ -74,8 +91,41 @@ public class MainActivity extends AppCompatActivity {
             }
             if(in_dictionaries){
                 items.add(new NthTrial(input_word));
-                wordlistviewadpater = new WordListViewAdapter(getApplicationContext(), items, the_word);
+//                wordlistviewadpater = new WordListViewAdapter(getApplicationContext(), items, the_word);
                 wordlist.setAdapter(wordlistviewadpater);
+
+
+                for(int k=0; k<5; k++) {
+                    if(the_word.indexOf(input_word.charAt(k))<0){
+                        if(grays.indexOf(Character.toString(input_word.charAt(k)))<0){
+                            grays.add(Character.toString(input_word.charAt(k)));
+
+                        }
+                    }
+                    else if(the_word.charAt(k)==input_word.charAt(k)){
+                        if(greens.indexOf(Character.toString(input_word.charAt(k)))<0){
+                            greens.add(Character.toString(input_word.charAt(k)));
+                        }
+                        if(yellows.indexOf(Character.toString(input_word.charAt(k)))>=0){
+                            yellows.remove(Character.toString(input_word.charAt(k)));
+                        }
+                    }
+                    else{
+                        if(greens.indexOf(Character.toString(input_word.charAt(k)))<0 && yellows.indexOf(Character.toString(input_word.charAt(k)))<0){
+                            yellows.add(Character.toString(input_word.charAt(k)));
+                        }
+                    }
+                }
+
+//                graylistviewadapter = new LetterListViewAdapter(getApplicationContext(), grays, "gray");
+//                greenlistviewadapter = new LetterListViewAdapter(getApplicationContext(), greens, "green");
+//                yellowlistviewadapter = new LetterListViewAdapter(getApplicationContext(), yellows, "yellow");
+                graylist.setAdapter(graylistviewadapter);
+                greenlist.setAdapter(greenlistviewadapter);
+                yellowlist.setAdapter(yellowlistviewadapter);
+
+
+
                 edittext.setText("");
             }
             else{

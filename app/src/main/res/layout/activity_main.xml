@@ -5,30 +5,31 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
+
     <!-- button과 edittext top& bottom -->
     <EditText
         android:id="@+id/edittext"
-        android:layout_height="50dp"
         android:layout_width="0dp"
+        android:layout_height="50dp"
         android:layout_margin="16dp"
+        android:text=""
         android:hint="Wordle"
         android:inputType="text"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/wordlist"
         app:layout_constraintEnd_toStartOf="@+id/submit_btn"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/wordlist"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/submit_btn"
-        android:layout_height="50dp"
         android:layout_width="wrap_content"
+        android:layout_height="50dp"
         android:layout_margin="16dp"
         android:text="SUBMIT"
-        app:layout_constraintStart_toEndOf="@+id/edittext"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/edittext"
         app:layout_constraintBottom_toBottomOf="@+id/edittext"
-        />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/edittext"
+        app:layout_constraintTop_toTopOf="@+id/edittext" />
 
     <ListView
         android:id="@+id/wordlist"
@@ -36,39 +37,86 @@
         android:layout_height="0dp"
         android:layout_margin="16dp"
 
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edittext"
-        app:layout_constraintBottom_toTopOf="@+id/letterlist"
         android:orientation="horizontal"
-        app:layout_constraintHorizontal_bias="0.0">
+        app:layout_constraintBottom_toTopOf="@+id/letterlist"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edittext">
+
+
     </ListView>
-<!--    app:layout_constraintBottom_toTopOf="@+id/letterlist"-->
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horizontal_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_end="250dp" />
+
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/letterlist"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="8dp"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/wordlist"
+
+        android:orientation="horizontal"
+        android:gravity="center">
+        <!--위에 grayvity 확인-->
 
         <ListView
-            android:id="@+id/letterlist"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:id="@+id/graylist"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
             android:layout_margin="8dp"
+            android:layout_weight="1"
 
-            android:orientation="horizontal"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
+            android:orientation="vertical">
+        </ListView>
 
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/wordlist">
+        <ListView
+            android:id="@+id/yellowlist"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_margin="8dp"
+            android:layout_weight="1"
+
+            android:orientation="vertical">
 
         </ListView>
-<!--    <TextView-->
-<!--        android:id="@+id/textview"-->
-<!--        android:layout_width="0dp"-->
-<!--        android:layout_height="50dp"-->
-<!--        android:textSize="30sp"-->
-<!--        android:text=""-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/wordlist"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        />-->
+
+        <ListView
+            android:id="@+id/greenlist"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_margin="8dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+        </ListView>
+
+    </LinearLayout>
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.33" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.67" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
